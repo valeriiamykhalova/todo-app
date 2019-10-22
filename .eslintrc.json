@@ -1,0 +1,15 @@
+{
+    "extends": "airbnb-base",
+    "parser": "babel-eslint",
+    "rules": {
+        "class-methods-use-this": "off",
+        "no-undef": "warn",
+        "func-names": "off",
+        "prefer-const": "warn",
+        "no-console": "off",
+        "padded-blocks": "warn",
+        "no-unused-vars": "warn",
+        "comma-dangle": "warn",
+        "no-new": "off"
+    }
+}
