@@ -1,0 +1,48 @@
+.todo-dropdown {
+  position: relative
+  display: inline-block
+}
+
+.todo-dropdown__button {
+  display: inline-block
+  padding: 0.5rem 1rem
+  border: 1px solid #dbdbdb
+  border-radius: 4px
+  font-size: 16px
+  background-color: #fff
+}
+
+.todo-dropdown__menu {
+  padding-top: 5px
+  position: absolute
+  width: 120px
+  top: 100%
+  left: 50%
+  transform: translateX(-50%)
+}
+
+.todo-dropdown__content {
+  padding-bottom: 8px
+  padding-top: 8px
+  border-radius: 4px
+  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1)
+  display: none
+  flex-direction: column
+  background-color: white;
+}
+
+.todo-dropdown__item {
+  text-decoration: none
+  color: #4a4a4a
+  padding: 6px 16px
+  font-size: 1rem
+
+  &:hover {
+    background-color: #172b4d
+    color: #fff
+  }
+}
+
+.todo-dropdown:hover .todo-dropdown__content {
+  display: flex
+}

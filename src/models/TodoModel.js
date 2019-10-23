@@ -23,10 +23,13 @@ export default class TodoModel {
     callback(null);
   }
 
-  deleteTodo = (todo) => (
-    [
-      ...todos.slice(0, todo),
-      ...todos.slice(todo + 1)
-    ]
-  )
+  deleteTodo = (todoId, callback) => {
+    const deletedTodo = todos.find((todo) => todo.id === todoId);
+    const todoList = [
+      ...todos.slice(0, deletedTodo),
+      ...todos.slice(deletedTodo + 1)
+    ];
+    setTodos(todoList);
+    callback(null);
+  }
 }

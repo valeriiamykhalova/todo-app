@@ -8,6 +8,12 @@ export default class TodoController {
   }
 
   initialize() {
+    this.todoView.onclickDeleteTodo = () => {
+      this.todoModel.deleteTodo(this.todoId, () => {
+        this.todoView.deleteTodo(this.todoModel);
+      });
+    };
+
     this.todoModel.getTodo(this.todoId, () => {
       this.todoView.renderTodo(this.todoModel);
     });
