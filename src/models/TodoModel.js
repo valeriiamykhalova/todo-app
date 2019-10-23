@@ -1,30 +1,32 @@
-import todos from '../../todos';
+import { todos, setTodos } from '../../todos';
 
 export default class TodoModel {
   constructor() {
-    this.todos = todos;
     this.todo = null;
   }
 
   getTodo = (todoId, callback) => {
-    this.todo = this.todos.find((todo) => todo.id === todoId);
+    this.todo = todos.find((todo) => todo.id === todoId);
     callback(null);
   }
 
-  createTodo = (todo) => (
-    [...this.todos, {
-      id: todo.id,
-      title: todo.title,
-      description: todo.description,
-      status: false,
-      priority: todo.priority
-    }]
-  )
+  createTodo = (title, description, priority, callback) => {
+    const todoList = [...todos, {
+      id: Math.floor(Math.random() * Math.floor(1000)),
+      done: false,
+      title,
+      description,
+      priority
+    }];
+
+    setTodos(todoList);
+    callback(null);
+  }
 
   deleteTodo = (todo) => (
     [
-      ...this.todos.slice(0, todo),
-      ...this.todos.slice(todo + 1)
+      ...todos.slice(0, todo),
+      ...todos.slice(todo + 1)
     ]
   )
 }

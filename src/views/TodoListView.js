@@ -1,6 +1,7 @@
 import TodoModel from '../models/TodoModel';
 import TodoView from './TodoView';
 import TodoController from '../controllers/TodoController';
+import { todos } from '../../todos';
 
 export default class TodoListView {
   constructor(element) {
@@ -8,10 +9,9 @@ export default class TodoListView {
   }
 
   renderTodoList(model) {
-    const todoList = model.todos;
     const todoListEl = document.querySelector('.todo-list');
 
-    todoList.forEach((el) => {
+    todos.forEach((el) => {
       const todo = document.createElement('li');
       todo.classList.add('todo-item');
 
