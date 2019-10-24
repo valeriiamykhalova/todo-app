@@ -23,6 +23,15 @@ export default class TodoModel {
     callback(null);
   }
 
+  editTodo = (todoId, title, description, priority, callback) => {
+    const editedTodo = todos.find((todo) => todo.id === todoId);
+    editedTodo.title = title;
+    editedTodo.description = description;
+    editedTodo.priority = priority;
+
+    callback(null);
+  }
+
   deleteTodo = (todoId, callback) => {
     const deletedTodo = todos.find((todo) => todo.id === todoId);
     const todoList = [
@@ -30,6 +39,12 @@ export default class TodoModel {
       ...todos.slice(deletedTodo + 1)
     ];
     setTodos(todoList);
+    callback(null);
+  }
+
+  doneTodo = (todoId, callback) => {
+    const doneTodo = todos.find((todo) => todo.id === todoId);
+    doneTodo.done = true;
     callback(null);
   }
 }

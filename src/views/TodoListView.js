@@ -17,7 +17,7 @@ export default class TodoListView {
 
       const todoView = new TodoView(todo);
       const todoModel = new TodoModel();
-      new TodoController(todoView, todoModel, el.id);
+      new TodoController(todoView, todoModel, el);
 
       todoListEl.appendChild(todo);
     });

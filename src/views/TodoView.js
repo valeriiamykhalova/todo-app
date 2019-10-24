@@ -2,6 +2,8 @@ export default class TodoView {
   constructor(element) {
     this.element = element;
     this.onclickDeleteTodo = null;
+    this.onclickEditTodo = null;
+    this.onclickDoneTodo = null;
   }
 
   renderTodo(model) {
@@ -18,8 +20,8 @@ export default class TodoView {
             <button class="todo-dropdown__button">...</button>
             <div class="todo-dropdown__menu">
               <div class="todo-dropdown__content">
-                <button type="button" class="todo-dropdown__item todo-dropdown__item--active">done</li>
-                <button type="button" class="todo-dropdown__item">edit</li>
+                <button type="button" class="todo-dropdown__item done-button todo-dropdown__item--active">done</li>
+                <button type="button" class="todo-dropdown__item edit-button">edit</li>
                 <button type="button" class="todo-dropdown__item delete-button">delete</li>
               </div>
             </div>
@@ -29,9 +31,20 @@ export default class TodoView {
 
     const deleteButtonEl = this.element.querySelector('.delete-button');
     deleteButtonEl.addEventListener('click', this.onclickDeleteTodo);
+
+    const editButtonEl = this.element.querySelector('.edit-button');
+    editButtonEl.addEventListener('click', this.onclickEditTodo);
+
+    const doneButtonEl = this.element.querySelector('.done-button');
+    doneButtonEl.addEventListener('click', this.onclickDoneTodo);
+
   }
 
   deleteTodo() {
     this.element.remove();
+  }
+
+  markAsDoneTodo() {
+    this.element.classList.add('todo-item--done');
   }
 }

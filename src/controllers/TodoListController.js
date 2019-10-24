@@ -1,4 +1,4 @@
-export default class TodoController {
+export default class TodoListController {
   constructor(view, model) {
     this.todoListView = view;
     this.todoListModel = model;

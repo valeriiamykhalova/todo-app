@@ -20,9 +20,9 @@ export default class CreateTodoView {
               <p class="mb-2">
                 <label class="form__label">Priority: </label>
                 <select required name="priority" class="form__priority">
-                  <option value="high" selected>High</option>
-                  <option value="normal">Normal</option>
-                  <option value="low">Low</option>
+                  <option value="high" data-id="0">high</option>
+                  <option value="normal" data-id="1">normal</option>
+                  <option value="low" data-id="2">low</option>
                 </select>
               </p>
               <p class="form__buttons-box">
@@ -43,12 +43,31 @@ export default class CreateTodoView {
     return this.element.querySelector('.form__title').value;
   }
 
+  setTodoTitle(value) {
+    this.element.querySelector('.form__title').value = value;
+  }
+
   getTodoDescription() {
     return this.element.querySelector('.form__description').value;
+  }
+
+  setTodoDescription(value) {
+    this.element.querySelector('.form__description').value = value;
   }
 
   getTodoPriority() {
     const formPriorityEl = this.element.querySelector('.form__priority');
     return formPriorityEl.options[formPriorityEl.selectedIndex].value;
+  }
+
+  setTodoPriority(value) {
+    const formPriorityEl = this.element.querySelector('.form__priority');
+    formPriorityEl.options.selectedIndex = Array.from(formPriorityEl.options)
+      .find((option) => option.value === value).dataset.id;
+  }
+
+  toggleHiddenModal() {
+    const modalEl = this.element.querySelector('.modal');
+    modalEl.classList.toggle('hidden');
   }
 }

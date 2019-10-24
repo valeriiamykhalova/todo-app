@@ -1,4 +1,5 @@
 .todo-item {
+  position: relative
   margin: 0 2rem 2rem 2rem
   padding: 2rem
   display: flex
@@ -10,19 +11,38 @@
   background-color: #ebecf0
   color: #172b4d
   box-shadow: 0 0 0 5px rgba(0,0,0,0.03)
-  text-transform: capitalize
+  &--done {
+    background-color: #a9a9a9;
+    &::after {
+      content: "✓"
+      font-size: 2rem
+      font-weight: 600
+      position: absolute
+      top: 0
+      right: 0
+    }
+
+    & > .todo-item__description {
+      background-color: #dedbdb;
+    }
+  }
 }
 
 .todo-item__title {
   text-align: center
+  &::first-letter {
+    text-transform: capitalize
+  }
 }
 
 .todo-item__description {
   padding: 0.3rem
   margin: 1rem 0
-  text-transform: capitalize
   background-color: #fff
   border-radius: 4px
+  &::first-letter {
+    text-transform: capitalize
+  }
 }
 
 .todo-item__wrapper {

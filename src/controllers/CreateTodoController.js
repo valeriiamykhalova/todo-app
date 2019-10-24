@@ -1,4 +1,4 @@
-export default class TodoController {
+export default class CreateTodoController {
   constructor(createTodoView, todoListView, todoModel) {
     this.createTodoView = createTodoView;
     this.todoListView = todoListView;
@@ -21,6 +21,8 @@ export default class TodoController {
         this.createTodoView.getTodoPriority(),
         func
       );
+
+      this.createTodoView.toggleHiddenModal();
     };
 
     this.createTodoView.renderCreateTodo();
