@@ -15,6 +15,11 @@ export default class CreateTodoController {
         this.todoListView.renderTodoList(this.todoModel);
       };
 
+      if (this.createTodoView.getTodoTitle() === '' || this.createTodoView.getTodoDescription() === '') {
+        this.createTodoView.showRequiredMessage();
+        return;
+      }
+
       this.todoModel.createTodo(
         this.createTodoView.getTodoTitle(),
         this.createTodoView.getTodoDescription(),
@@ -23,6 +28,14 @@ export default class CreateTodoController {
       );
 
       this.createTodoView.toggleHiddenModal();
+    };
+
+    this.createTodoView.oncancelCancelTodo = () => {
+      this.createTodoView.toggleHiddenModal();
+
+      this.createTodoView.setTodoTitle('');
+      this.createTodoView.getTodoDescription('');
+      this.createTodoView.getTodoPriority('high');
     };
 
     this.createTodoView.renderCreateTodo();

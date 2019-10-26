@@ -2,6 +2,8 @@ export default class CreateTodoView {
   constructor(element) {
     this.element = element;
     this.onsubmitAddTodo = null;
+    this.onsubmitEditTodo = null;
+    this.oncancelCancelTodo = null;
   }
 
   renderCreateTodo() {
@@ -10,13 +12,14 @@ export default class CreateTodoView {
           <div class="modal__background"></div>
           <div class="modal__card">
             <form method="post" class="form">
-              <p class="mb-1">
+              <div class="mb-1">
                 <input class="form__title" type="text" spellcheck="false" placeholder="Title" autofocus required />
-              </p>
-              <p class="mb-1">
+              </div>
+              <div class="mb-1">
                 <textarea class="form__description" spellcheck="false" placeholder="Write a description.." required
                   rows="5"></textarea>
-              </p>
+                <p class="is-required description-title-required hidden">Description and title are required!</p>
+              </div>
               <p class="mb-2">
                 <label class="form__label">Priority: </label>
                 <select required name="priority" class="form__priority">
@@ -35,8 +38,11 @@ export default class CreateTodoView {
     `;
 
     const addTodoButtonEl = this.element.querySelector('.submit-btn');
+    const cancelButtonEl = this.element.querySelector('.cancel-btn');
 
+    addTodoButtonEl.addEventListener('click', this.onsubmitEditTodo);
     addTodoButtonEl.addEventListener('click', this.onsubmitAddTodo);
+    cancelButtonEl.addEventListener('click', this.oncancelCancelTodo);
   }
 
   getTodoTitle() {
@@ -69,5 +75,10 @@ export default class CreateTodoView {
   toggleHiddenModal() {
     const modalEl = this.element.querySelector('.modal');
     modalEl.classList.toggle('hidden');
+  }
+
+  showRequiredMessage() {
+    const descriptionTitleRequiredEl = document.querySelector('.description-title-required');
+    descriptionTitleRequiredEl.classList.remove('hidden');
   }
 }

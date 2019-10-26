@@ -1,4 +1,5 @@
 import CreateTodoView from '../views/CreateTodoView';
+import EditTodoController from './EditTodoController';
 
 export default class TodoController {
   constructor(view, model, todo) {
@@ -26,6 +27,10 @@ export default class TodoController {
       createTodoView.setTodoPriority(this.todo.priority);
 
       createTodoView.toggleHiddenModal();
+
+      const editTodoController = new EditTodoController(
+        createTodoView, this.todoView, this.todoModel
+      );
     };
 
     this.todoView.onclickDoneTodo = () => {

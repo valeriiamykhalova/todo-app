@@ -11,14 +11,14 @@ export default class TodoModel {
   }
 
   createTodo = (title, description, priority, callback) => {
-    const todoList = [...todos, {
-      id: Math.floor(Math.random() * Math.floor(1000)),
-      done: false,
-      title,
-      description,
-      priority
-    }];
-
+    const todoList = [
+      {
+        id: Math.floor(Math.random() * Math.floor(1000)),
+        done: false,
+        title,
+        description,
+        priority
+      }, ...todos];
     setTodos(todoList);
     callback(null);
   }

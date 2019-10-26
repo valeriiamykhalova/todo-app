@@ -10,6 +10,7 @@ export default class TodoListView {
 
   renderTodoList(model) {
     const todoListEl = document.querySelector('.todo-list');
+    todoListEl.innerHTML = '';
 
     todos.forEach((el) => {
       const todo = document.createElement('li');
