@@ -2,12 +2,13 @@ export default class TodoView {
   constructor(element) {
     this.element = element;
     this.onclickCreateTodo = null;
+    this.oninputSearchTodos = null;
   }
 
   renderNavigation() {
     this.element.innerHTML = `
         <div class="search">
-        <input class="search__input" spellCheck="false" type="text" placeholder="Search by title" />
+          <input class="search__input" spellCheck="false" type="text" placeholder="Search by title" />
         </div>
         <div>
           <select name="filterDone" class="navigation__filter">
@@ -29,5 +30,8 @@ export default class TodoView {
 
     const createButtonEl = this.element.querySelector('.create-button');
     createButtonEl.addEventListener('click', this.onclickCreateTodo);
+
+    const searchInputEl = this.element.querySelector('.search__input');
+    searchInputEl.addEventListener('input', this.oninputSearchTodos);
   }
 }

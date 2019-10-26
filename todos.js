@@ -26,21 +26,21 @@ let todos = [
     "id": 4,
     "title": "eum et est occaecati",
     "description": "ullam et saepe reiciendis voluptatem adipisci\nsit amet autem assumenda",
-    "done": false,
+    "done": true,
     "priority": "low"
   },
   {
     "id": 5,
     "title": "nesciunt quas odio",
     "description": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est",
-    "done": false,
+    "done": true,
     "priority": "normal"
   },
   {
     "id": 6,
     "title": "dolorem eum magni",
     "description": "ut aspernatur corporis harum nihil quis provident sequi\nmollitia nobis aliquid",
-    "done": false,
+    "done": true,
     "priority": "normal"
   },
   {
@@ -61,7 +61,7 @@ let todos = [
     "id": 9,
     "title": "nesciunt iure omnis",
     "description": "consectetur animi nesciunt iure dolore\nenim quia ad\nveniam autem ut quam aut nobis",
-    "done": false,
+    "done": true,
     "priority": "low"
   },
   {

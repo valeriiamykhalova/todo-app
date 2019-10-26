@@ -29,6 +29,10 @@ export default class TodoView {
         </div>
     `;
 
+    if (model.todo.done) {
+      this.element.classList.add('todo-item--done');
+    }
+
     const deleteButtonEl = this.element.querySelector('.delete-button');
     deleteButtonEl.addEventListener('click', this.onclickDeleteTodo);
 
