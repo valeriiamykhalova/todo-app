@@ -1,8 +1,9 @@
 export default class EditTodoController {
-  constructor(createTodoView, todoView, todoModel) {
+  constructor(createTodoView, todoView, todoModel, todoId) {
     this.createTodoView = createTodoView;
     this.todoView = todoView;
     this.todoModel = todoModel;
+    this.todoId = todoId;
 
     this.initialize();
   }
@@ -15,8 +16,13 @@ export default class EditTodoController {
         this.todoView.renderTodo(this.todoModel);
       };
 
+      if (this.createTodoView.getTodoTitle() === '' || this.createTodoView.getTodoDescription() === '') {
+        this.createTodoView.showRequiredMessage();
+        return;
+      }
+
       this.todoModel.editTodo(
-        this.todo.id,
+        this.todoId,
         this.createTodoView.getTodoTitle(),
         this.createTodoView.getTodoDescription(),
         this.createTodoView.getTodoPriority(),
@@ -25,5 +31,11 @@ export default class EditTodoController {
 
       this.createTodoView.toggleHiddenModal();
     };
+
+    this.createTodoView.oncancelCancelTodo = () => {
+      this.createTodoView.toggleHiddenModal();
+    };
+
+    this.createTodoView.renderCreateTodo();
   }
 }

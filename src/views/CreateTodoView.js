@@ -29,7 +29,7 @@ export default class CreateTodoView {
                 </select>
               </p>
               <p class="form__buttons-box">
-                <button type="submit" class="main-button main-button--dark main-button--large submit-btn">Save</button>
+                <button type="button" class="main-button main-button--dark main-button--large submit-btn">Save</button>
                 <button type="button" class="main-button main-button--large cancel-btn">Cancel</button>
               </p>
             </form>
@@ -37,11 +37,11 @@ export default class CreateTodoView {
         </div>
     `;
 
-    const addTodoButtonEl = this.element.querySelector('.submit-btn');
+    const submitButtonEl = this.element.querySelector('.submit-btn');
     const cancelButtonEl = this.element.querySelector('.cancel-btn');
 
-    addTodoButtonEl.addEventListener('click', this.onsubmitEditTodo);
-    addTodoButtonEl.addEventListener('click', this.onsubmitAddTodo);
+    submitButtonEl.addEventListener('click', this.onsubmitEditTodo);
+    submitButtonEl.addEventListener('click', this.onsubmitAddTodo);
     cancelButtonEl.addEventListener('click', this.oncancelCancelTodo);
   }
 
@@ -74,7 +74,10 @@ export default class CreateTodoView {
 
   toggleHiddenModal() {
     const modalEl = this.element.querySelector('.modal');
+    const body = document.querySelector('body');
+
     modalEl.classList.toggle('hidden');
+    body.classList.toggle('overflow-hidden');
   }
 
   showRequiredMessage() {

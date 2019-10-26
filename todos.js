@@ -5,7 +5,7 @@ let todos = [
     "id": 1,
     "title": "sunt aut facere",
     "description": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum",
-    "done": true,
+    "done": false,
     "priority": "high"
   },
   {
@@ -19,7 +19,7 @@ let todos = [
     "id": 3,
     "title": "ea molestias quasi",
     "description": "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi",
-    "done": true,
+    "done": false,
     "priority": "high"
   },
   {
@@ -33,7 +33,7 @@ let todos = [
     "id": 5,
     "title": "nesciunt quas odio",
     "description": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est",
-    "done": true,
+    "done": false,
     "priority": "normal"
   },
   {
@@ -54,7 +54,7 @@ let todos = [
     "id": 8,
     "title": "dolorem dolore",
     "description": "dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint",
-    "done": true,
+    "done": false,
     "priority": "normal"
   },
   {

@@ -21,16 +21,15 @@ export default class TodoController {
       const addTodoModelEl = document.querySelector('.add-todo-model');
       const createTodoView = new CreateTodoView(addTodoModelEl);
 
-      createTodoView.renderCreateTodo();
-      createTodoView.setTodoTitle(this.todo.title);
-      createTodoView.setTodoDescription(this.todo.description);
-      createTodoView.setTodoPriority(this.todo.priority);
+      new EditTodoController(
+        createTodoView, this.todoView, this.todoModel, this.todo.id
+      );
 
       createTodoView.toggleHiddenModal();
 
-      const editTodoController = new EditTodoController(
-        createTodoView, this.todoView, this.todoModel
-      );
+      createTodoView.setTodoTitle(this.todo.title);
+      createTodoView.setTodoDescription(this.todo.description);
+      createTodoView.setTodoPriority(this.todo.priority);
     };
 
     this.todoView.onclickDoneTodo = () => {
