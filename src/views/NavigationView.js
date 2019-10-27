@@ -3,6 +3,8 @@ export default class TodoView {
     this.element = element;
     this.onclickCreateTodo = null;
     this.oninputSearchTodos = null;
+    this.onchangeFilterDoneTodos = null;
+    this.onchangeFilterPriorityTodos = null;
   }
 
   renderNavigation() {
@@ -11,14 +13,14 @@ export default class TodoView {
           <input class="search__input" spellCheck="false" type="text" placeholder="Search by title" />
         </div>
         <div>
-          <select name="filterDone" class="navigation__filter">
-            <option value="high">all</option>
-            <option value="normal">open</option>
-            <option value="low">done</option>
+          <select name="filterDone" class="navigation__filter filter-done">
+            <option value="all">all</option>
+            <option value="open">open</option>
+            <option value="done">done</option>
           </select>
         </div>
         <div>
-          <select name="filterPriority" class="navigation__filter">
+          <select name="filterPriority" class="navigation__filter filter-priority">
             <option value="all">all</option>
             <option value="high">high</option>
             <option value="normal">normal</option>
@@ -33,5 +35,11 @@ export default class TodoView {
 
     const searchInputEl = this.element.querySelector('.search__input');
     searchInputEl.addEventListener('input', this.oninputSearchTodos);
+
+    const filterDoneEl = this.element.querySelector('.filter-done');
+    filterDoneEl.addEventListener('change', this.onchangeFilterDoneTodos);
+
+    const filterPriorityEl = this.element.querySelector('.filter-priority');
+    filterPriorityEl.addEventListener('change', this.onchangeFilterPriorityTodos);
   }
 }

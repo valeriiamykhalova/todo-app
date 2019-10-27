@@ -24,6 +24,10 @@ export default class TodoController {
     };
 
     const todoList = [...todos];
+    const todosEl = document.querySelector('.todos');
+    const todoListView = new TodoListView(todosEl);
+    const todoModel = new TodoModel();
+
     this.navigationView.oninputSearchTodos = (evt) => {
       if (evt.target.value) {
         let foundTodos = todos.filter(
@@ -34,12 +38,33 @@ export default class TodoController {
         setTodos(todoList);
       }
 
-      const todosEl = document.querySelector('.todos');
-      const todoListView = new TodoListView(todosEl);
-      const todoModel = new TodoModel();
       new TodoListController(todoListView, todoModel);
     };
 
+    this.navigationView.onchangeFilterDoneTodos = (evt) => {
+      let foundTodos = [];
+
+      if (evt.target.value === 'done') {
+        foundTodos = todos.filter((todo) => todo.done === true);
+      } else if (evt.target.value === 'open') {
+        foundTodos = todos.filter((todo) => todo.done === false);
+      } else {
+        foundTodos = todoList;
+      }
+      setTodos(foundTodos);
+      new TodoListController(todoListView, todoModel);
+    };
+
+    this.navigationView.onchangeFilterPriorityTodos = (evt) => {
+      let foundTodos = [];
+      if (evt.target.value === 'all') {
+        foundTodos = todoList;
+      } else {
+        foundTodos = todos.filter((todo) => todo.priority === evt.target.value);
+      }
+      setTodos(foundTodos);
+      new TodoListController(todoListView, todoModel);
+    };
     this.navigationView.renderNavigation();
   }
 }
